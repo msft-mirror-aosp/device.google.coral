@@ -20,13 +20,16 @@ include device/google/coral/device-common.mk
 
 DEVICE_PACKAGE_OVERLAYS += device/google/coral/flame/overlay
 
+PRODUCT_PACKAGES += \
+    TelephonyOverlay2019Flame
+
 # Audio XMLs for flame
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_flame.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
 
 # Bluetooth Tx power caps for flame
 PRODUCT_COPY_FILES += \
-    vendor/google/services/GoogleRil/native/qc/bluetooth_power_limits_flame.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
+    $(LOCAL_PATH)/bluetooth_power_limits_flame.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
 
 # Display config
 PRODUCT_COPY_FILES += \
