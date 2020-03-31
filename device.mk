@@ -40,6 +40,7 @@ DEVICE_USES_SM7250_QCRIL_TELEPHONY := true
 ifeq ($(DEVICE_USES_SM7250_QCRIL_TELEPHONY), true)
   PRODUCT_SOONG_NAMESPACES += \
       vendor/qcom/sm7250/codeaurora/commonsys/telephony/ims/ims-ext-common \
+      vendor/qcom/sm7250/codeaurora/dataservices/rmnetctl \
       vendor/qcom/sm7250/proprietary/commonsys/qcrilOemHook \
       vendor/qcom/sm7250/proprietary/commonsys/telephony-apps/ims \
       vendor/qcom/sm7250/proprietary/commonsys/telephony-apps/QtiTelephonyService \
@@ -794,12 +795,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-32:system_ext/lib/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-64:system_ext/lib64/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-32:vendor/lib/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-64:vendor/lib64/android.hidl.base@1.0.so \
-
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
@@ -892,10 +887,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
-
-# power HAL
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
@@ -996,5 +987,8 @@ endif
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 include hardware/google/pixel/pixelstats/device.mk
+
+# power HAL
+-include hardware/google/pixel/power-libperfmgr/aidl/device.mk
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
