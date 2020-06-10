@@ -31,6 +31,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/data/permissions \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
@@ -328,6 +329,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
     ro.hardware.keystore_desede=true \
     persist.vendor.radio.procedure_bytes=SKIP \
+
+# Enable reboot free DSDS
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.radio.reboot_on_modem_change=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.active_modems.max_count=2
 
 # Disable snapshot timer
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -925,7 +933,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=18
+	ro.vendor.build.svn=21
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
