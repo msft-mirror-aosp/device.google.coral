@@ -286,6 +286,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.multi_voice_session.enable=true \
     vendor.audio.capture.enforce_legacy_copp_sr=true \
     persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
+    vendor.audio.offload.gapless.enabled=true \
 
 # MaxxAudio effect and add rotation monitor
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -960,7 +961,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=23
+	ro.vendor.build.svn=24
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
