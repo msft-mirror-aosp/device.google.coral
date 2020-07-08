@@ -31,6 +31,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/data/permissions \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
@@ -819,8 +820,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Enable stats logging in LMKD
 TARGET_LMKD_STATS_LOG := true
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lmk.log_stats=true
 
 # default usb oem functions
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -932,7 +931,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=20
+	ro.vendor.build.svn=23
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
