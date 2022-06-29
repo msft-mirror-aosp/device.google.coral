@@ -459,8 +459,11 @@ PRODUCT_COPY_FILES += \
     device/google/coral/nfc/libese-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libese-hal-st.conf \
     device/google/coral/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
 
+# USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.coral
+    android.hardware.usb-service.coral
+PRODUCT_PACKAGES += \
+    android.hardware.usb.gadget-service.coral
 
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl-coral \
@@ -967,7 +970,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=57
+	ro.vendor.build.svn=58
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
